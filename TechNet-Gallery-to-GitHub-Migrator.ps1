@@ -202,9 +202,12 @@ foreach($TechNetURL in $TechNetURLs)
 	#Write-Host "IMPORTED HTML FROM TECHNET GALLERY: " -foreground "yellow" 
 	$text = [regex]::match($content,'<div\s*id=\"longDesc\">(.*?)<\/body>',[System.Text.RegularExpressions.RegexOptions]::SingleLine).Groups[1].Value
 
-	#STRIP OUT CODE BLOCKS
-	$text = $text -replace '(?ms)<div\s*class=\"scriptcode\">(.*?)<div\s*class=\"endscriptcode\">', ""
-
+	#STRIP OUT CODE BLOCKS FROM HTML
+	if($text -imatch '<div\s*class=\"scriptcode\">')
+	{
+		Write-Host "INFO: Embedded code block found in post. Removing code blocks from Readme.md text." -foreground "Yellow"
+		$text = $text -replace '(?ms)<div\s*class=\"scriptcode\">(.*?)<div\s*class=\"endscriptcode\">', ""
+	}
 
 	# Convert paragraphs and lists
 	$text = $text -replace "\s*<ul>\s*", "`r`n"
