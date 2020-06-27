@@ -245,7 +245,7 @@ foreach($TechNetURL in $TechNetURLs)
 	foreach($image in $imageArray)
 	{
 		$imageFile = $image.Groups[1].Value
-		if(!($imageFile -imatch "^https:"))
+		if(!($imageFile -imatch "^https:" -or $imageFile -imatch "^http:"))
 		{
 			Write-Host "INFO: Incomplete URL: $imageFile" -foreground "yellow"
 			Write-Host "INFO: Incomplete URL add https://gallery.technet.microsoft.com" -foreground "yellow"
