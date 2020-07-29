@@ -1,6 +1,6 @@
 ########################################################################
 # Name: TechNet Gallery to GitHub Migrator
-# Version: v1.0.0 (1/5/2020)
+# Version: v1.0.1 (29/7/2020)
 # Original Release Date: 1/5/2020
 # Created By: James Cussen
 # Web Site: http://www.myteamslab.com
@@ -228,7 +228,7 @@ foreach($TechNetURL in $TechNetURLs)
 	$text = $text -replace "&quot;", "'"
 	$text = $text -replace "<!--break-->", ""
 
-	#STRIP ANY RETURN CARRIAGES AND NEWLINES WITHIN A TAGS
+	#STRIP ANY RETURN CARRIAGES AND NEWLINES WITHIN TAGS
 	#$text = $text -replace '(<a.*>[^<]*)[\r?\n|\r]([^<]*<\/a>)', '$1$2'
 	
 	# Convert Links from <a> to Markdown style
@@ -245,7 +245,7 @@ foreach($TechNetURL in $TechNetURLs)
 	foreach($image in $imageArray)
 	{
 		$imageFile = $image.Groups[1].Value
-		if(!($imageFile -imatch "^https:"))
+		if(!($imageFile -imatch "^https:" -or $imageFile -imatch "^http:"))
 		{
 			Write-Host "INFO: Incomplete URL: $imageFile" -foreground "yellow"
 			Write-Host "INFO: Incomplete URL add https://gallery.technet.microsoft.com" -foreground "yellow"
