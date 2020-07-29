@@ -27,7 +27,8 @@ This tool is a Powershell script that runs allows you to easily migrate content 
  * Code snippets in the TechNet Gallery text will not be migrated to the GitHub README.md file. I would suggest given that the code file will be on GitHub that this is not necessary in the readme file.
 
 **Release Notes:**
- * Initial Release
+
+* 1.01 - Added support for externally hosted images on http websites
 
  
 **All information on this tool can be found here:** [https://www.myteamslab.com/2020/05/technet-gallery-to-github-migration-tool.html](https://www.myteamslab.com/2020/05/technet-gallery-to-github-migration-tool.html)
